@@ -1,4 +1,7 @@
+import {useMultistepform} from "./useMultistepForm"
+
 function App() {
+  const {steps, currentStepIndex} = useMultistepform([<div>one</div>, <div>two</div>])
   return (
     <div
       style={{
@@ -12,7 +15,11 @@ function App() {
         fontFamily: "Arial"
       }}
     >
-      <form></form>
+      <form>
+        <div style={{position: "absolute", top: ".5rem", right: ".5rem"}}>
+          {currentStepIndex + 1}/{steps.length}
+        </div>
+      </form>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import {ReactElement, useState, useEffect} from "react"
 
-export const useMultistepFrom = (steps: ReactElement[]) => {
+export const useMultistepform = (steps: ReactElement[]) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
 
   function next() {
@@ -20,5 +20,13 @@ export const useMultistepFrom = (steps: ReactElement[]) => {
     setCurrentStepIndex(index)
   }
 
-  return {currentStepIndex, step: steps[currentStepIndex], goto, next, back}
+  return {
+    //
+    currentStepIndex,
+    step: steps[currentStepIndex],
+    steps,
+    goto,
+    next,
+    back
+  }
 }
