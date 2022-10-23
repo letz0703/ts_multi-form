@@ -25,14 +25,16 @@ function App() {
           {currentStepIndex + 1}/{steps.length}
         </div>
         {step}
-        {!isFirstStep && (
-          <button type='button' onClick={back}>
-            Back
+        <div style={{marginTop: "1rem", display: "flex", gap: ".5rem", justifyContent: "flex-end"}}>
+          {!isFirstStep && (
+            <button type='button' onClick={back}>
+              Back
+            </button>
+          )}
+          <button type='button' onClick={next}>
+            {!isLastStep ? "next" : "the END"}
           </button>
-        )}
-        <button type='button' onClick={next}>
-          {!isLastStep ? "next" : "the END"}
-        </button>
+        </div>
       </form>
     </div>
   )
