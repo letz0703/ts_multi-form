@@ -1,7 +1,12 @@
+import {AccountFrom} from "./AccountForm"
+import AddressFrom from "./AddressForm"
 import {useMultistepform} from "./useMultistepForm"
+import {UserForm} from "./UserForm"
 
 function App() {
-  const {steps, currentStepIndex, step, isFirstStep, back, next, isLastStep} = useMultistepform([<div>one</div>, <div>two</div>])
+  const {steps, currentStepIndex, step, isFirstStep, back, next, isLastStep} =
+    // useMultistepform([<div>one</div>, <div>two</div>])
+    useMultistepform([<UserForm />, <AccountFrom />, <AddressFrom />])
   return (
     <div
       style={{
@@ -25,13 +30,9 @@ function App() {
             Back
           </button>
         )}
-        {!isLastStep ? (
-          <button type='button' onClick={next}>
-            next
-          </button>
-        ) : (
-          <span style={{color: "red", marginLeft: "1rem"}}>마지막 페이지 입니다</span>
-        )}
+        <button type='button' onClick={next}>
+          {!isLastStep ? "next" : "the END"}
+        </button>
       </form>
     </div>
   )
