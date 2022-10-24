@@ -5,6 +5,7 @@ type FormWrapperProps = {
   title: string
   children: ReactNode
 }
+
 export default function FormWrapper({title, children}: FormWrapperProps) {
   // FormWrapperProps as the Type https://youtu.be/uDCBSnWkuH0?t=921
   return (
