@@ -1,18 +1,22 @@
 import React from "react"
 import FormWrapper from "./FormWrapper"
 
-type AccountFormProps = {
+type AccountData = {
   email: string
   password: string
 }
 
-export function AccountForm({email, password}: AccountFormProps) {
+type AccountFormProps = AccountData & {
+  updateFields: (fields: Partial<AccountData>) => void
+}
+
+export function AccountForm({email, password, updateFields}: AccountFormProps) {
   return (
     <FormWrapper title='Account'>
       <label>Email</label>
-      <input type='email' autoFocus required />
+      <input value={email} type='email' autoFocus required onChange={(e) => updateFields({email: e.target.value})} />
       <label>Password</label>
-      <input type='password' required />
+      <input value={password} type='password' required onChange={(e) => updateFields({password: e.target.value})} />
     </FormWrapper>
   )
 }

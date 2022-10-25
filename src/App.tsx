@@ -30,13 +30,22 @@ const INITIAL_DATA: FormData = {
 
 function App() {
   const [data, setData] = useState(INITIAL_DATA)
-  const {steps, currentStepIndex, step, isFirstStep, back, next, isLastStep} =
-    // useMultistepform([<div>one</div>, <div>two</div>])
-    useMultistepform([<UserForm {...data} />, <AccountForm {...data} />, <AddressFrom {...data} />])
 
+  function updateFields(fields: Partial<FormData>) {
+    setData((prev) => {
+      return {...prev, ...fields}
+    })
+  }
+
+  const {steps, currentStepIndex, step, isFirstStep, back, next, isLastStep} = useMultistepform([
+    <UserForm {...data} updateFields={updateFields} />, //
+    <AccountForm {...data} updateFields={updateFields} />,
+    <AddressFrom {...data} updateFields={updateFields} />
+  ])
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
-    next()
+    if (!isLastStep) return next()
+    alert("success")
   }
   return (
     <div
@@ -48,7 +57,8 @@ function App() {
         padding: "2rem",
         margin: "1rem",
         borderRadius: ".5rem",
-        fontFamily: "Arial"
+        fontFamily: "Arial",
+        maxWidth: "max-content"
       }}
     >
       <form onSubmit={onSubmit}>

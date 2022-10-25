@@ -1,3 +1,6 @@
+2022.10.26/수
+AAM: https://bit.ly/3W4WVjl : Multistep Form - The End
+//TODO: 통관번호, 상품 barcode, 전화번호register 폼making
 Check Update Field : https://youtube.com/clip/Ugkxwn73fBB68FH4cyNUuPbB3tkeVR1HB9zP
 2022.10.25/화 : useMutistepForm pro error
 https://youtube.com/clip/Ugkx-DEnnxwhRyIvW0Ewh5RAq_hspJ9YkuA4
