@@ -1,7 +1,12 @@
 import React from "react"
 import FormWrapper from "./FormWrapper"
 
-export function AccountFrom() {
+type AccountFormProps = {
+  email: string
+  password: string
+}
+
+export function AccountForm({email, password}: AccountFormProps) {
   return (
     <FormWrapper title='Account'>
       <label>Email</label>

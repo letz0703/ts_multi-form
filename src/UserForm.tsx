@@ -1,6 +1,12 @@
 import FormWrapper from "./FormWrapper"
 
-export function UserForm() {
+type UserFormProps = {
+  firstName: string
+  lastName: string
+  age: string
+}
+
+export function UserForm({firstName, lastName, age}: UserFormProps) {
   return (
     <FormWrapper title='User Detail'>
       <label>First Name</label>

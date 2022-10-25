@@ -1,13 +1,38 @@
-import {FormEvent} from "react"
-import {AccountFrom} from "./AccountForm"
+import {FormEvent, useState} from "react"
+import {AccountForm} from "./AccountForm"
 import AddressFrom from "./AddressForm"
 import {useMultistepform} from "./useMultistepForm"
 import {UserForm} from "./UserForm"
 
+type FormData = {
+  firstName: string
+  lastName: string
+  age: string
+  street: string
+  city: string
+  state: string
+  zip: string
+  email: string
+  password: string
+}
+
+const INITIAL_DATA: FormData = {
+  firstName: "",
+  lastName: "",
+  age: "",
+  street: "",
+  city: "",
+  state: "",
+  zip: "",
+  email: "",
+  password: ""
+}
+
 function App() {
+  const [data, setData] = useState(INITIAL_DATA)
   const {steps, currentStepIndex, step, isFirstStep, back, next, isLastStep} =
     // useMultistepform([<div>one</div>, <div>two</div>])
-    useMultistepform([<UserForm />, <AccountFrom />, <AddressFrom />])
+    useMultistepform([<UserForm {...data} />, <AccountForm {...data} />, <AddressFrom {...data} />])
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
